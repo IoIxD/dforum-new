@@ -1,0 +1,40 @@
+<title>{{.name}} - dforum</title>
+<meta property="og:title" content="{{.name}} - dforum">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{.url}}/{{.id}}">
+
+<span class='logo'><a href="/">dforum</a></span>
+<nav>
+<img src='{{.icon_url}}'>
+<ul>
+    <li>{{.name}}</li>
+</ul>
+</nav>
+<div class='tabular-list forum-list'>
+    <div class='header'>Forum</div>
+    <div class='header'>Last Active</div>
+    <div class='header highlight'>Posts</div>
+    <div class='header'>Messages</div>
+    {{$gid := .id}}
+{{range .forum_channels}}
+        <div>
+            <a href="/{{$gid}}/{{.id}}"><b>{{.Name}}</b></a>
+        </div>
+        <div>
+            {{if ne .last_active 0}}
+                <span class='label'>Last active at </span>
+                <time>{{.LastActive.Format "Jan 2 2006 3:04 PM"}}</time>
+            {{else}}
+                Never
+            {{end}}
+        </div>
+        <div>
+            {{len .posts}}
+            <span class='label'> posts</span>
+        </div>
+        <div>
+            {{.TotalMessageCount}}
+            <span class='label'> messages</span>
+        </div>
+{{end}}
+</div>

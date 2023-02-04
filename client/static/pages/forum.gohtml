@@ -1,0 +1,87 @@
+{{ template "header.gohtml" .}}
+
+{{$title := print .Forum.Name " forum on " .Guild.Name}}
+<title>{{$title}}</title>
+<meta property="og:title" content="{{$title}}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://{{.URL}}//{{.Guild.ID}}/{{.Forum.ID}}">
+
+<span class='logo'><a href="/">dforum</a></span>
+<nav>
+<img src='{{.Guild.IconURL}}?size=48'>
+<ul>
+    <li><a href="/{{.Guild.ID}}">{{.Guild.Name}}</a></li>
+    <li>{{.Forum.Name}}</li>
+</ul>
+<form class='tags' method='get'>
+    <b>Filter by </b>
+    <select name='tag-filter'>
+        <option value="">All</option>
+        {{range .Forum.AvailableTags}}
+            {{$selected := false}}
+
+            <option value="{{.ID}}" {{if $selected}}selected{{end}}>{{.Name}}</option>
+        {{end}}
+    </select>
+    <input type="submit" value=">">
+</form>
+</nav>
+
+<div class="more">
+{{if .Prev}}
+<a class="prevbtn btn" href="/{{.Guild.ID}}/{{.Forum.ID}}/page/{{.Prev}}">Previous</a><br>
+{{end}}
+{{if .Next}}
+<a class="nextbtn btn" href="/{{.Guild.ID}}/{{.Forum.ID}}/page/{{.Next}}">Next</a><br>
+{{end}}
+</div>
+
+<div class='tabular-list post-list'>
+    <div class='header'>Title</div>
+    <div class='header highlight'>Last Active</div>
+    <div class='header'>Messages</div>
+    {{range .Posts}}
+        <div class='title'>
+            {{if .IsPinned}}{{template "icon-push-pin"}}{{end}}
+            <a href="/{{$.Guild.ID}}/{{$.Forum.ID}}/{{.ID}}"><b>{{.Name}}</b></a>
+            {{with .Tags}}
+                <ul class="tag-list">
+                    {{range .}}
+                        <li>
+                    {{if .EmojiID.IsValid}}
+                        <img alt='{{.EmojiName}}' class='emoji' src='https://cdn.discordapp.com/emojis/{{.EmojiID}}.webp?size=40'>
+                    {{else if .EmojiName }}
+                        {{.EmojiName}}
+                    {{end}}
+                    {{- .Name -}}
+                    </li>
+                    {{end}}
+                </ul>
+            {{end}}
+        </div>
+        <div class='active'>
+            {{if ne .LastMessageID.Time.Unix 0}}
+                <span class='label'>Last active at </span>
+                <time>{{.LastMessageID.Time.Format "Jan 2 2006 3:04 PM"}}</time>
+            {{else}}
+                -
+            {{end}}
+        </div>
+        <div class='messages'>
+            {{.MessageCount}}
+            <span class='label'> messages</span>
+        </div>
+    {{end}}
+
+</div>
+
+<div class="more">
+{{if .Prev}}
+<a class="prevbtn btn" href="/{{.Guild.ID}}/{{.Forum.ID}}/page/{{.Prev}}">Previous</a><br>
+{{end}}
+{{if .Next}}
+<a class="nextbtn btn" href="/{{.Guild.ID}}/{{.Forum.ID}}/page/{{.Next}}">Next</a><br>
+{{end}}
+</div>
+
+{{ template "footer.gohtml" .}}

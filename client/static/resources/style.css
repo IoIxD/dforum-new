@@ -1,0 +1,456 @@
+body {
+    font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", "Verdana", sans-serif;
+    max-width: 920px;
+    display: block;
+    margin: 0 auto;
+    padding: 48px;
+    padding: 3rem;
+    background: #eee;
+    color: #111;
+}
+
+a {
+    color: #03c;
+    text-decoration: none;
+}
+
+blockquote {
+    background: #f9f9f9;
+    border-left: 3px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+}
+blockquote p {
+    display: inline-block;
+}
+
+pre {
+    display: inline-block;
+}
+p + pre {
+    margin-left: 0.5em;
+}
+
+
+img[src*=SPOILER_]:not(:hover) {
+    filter: blur(5px) brightness(10%);
+    overflow: hidden;
+    transition: 0.2s linear;
+    position: relative;
+}
+img[src*=SPOILER_]:hover {
+    transition: 0.2s linear;
+}
+
+form {
+    display: inline-block;
+}
+
+.row {
+    display:block;
+    margin: 5px 0;
+}
+
+.flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;   
+    display: flex;
+}
+
+.flex.row {
+    -moz-box-orient: inline-axis;
+    box-orient: inline-axis;
+    flex-direction: row;
+}
+.flex.column {
+    -moz-box-orient: block-axis;
+    box-orient: block-axis;
+    flex-direction: column;
+}
+
+.reactions {
+    vertical-align: middle;
+}
+.reactions .reaction {
+    display: inline-block;
+    height: 1.25em;
+    padding: 0.25em;
+    border-radius: 7.5px;;
+    background: #ddd;
+    vertical-align: middle;
+}
+
+.reactions .reaction .emoji {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+}
+
+.post .content .reactions img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+h1 a {
+    color: black;
+}
+
+.logo {
+    padding: 1em;
+}
+
+.logo a  {
+    color: black;
+    font-weight: bold;
+    border-bottom: 2px dotted #222;
+    font-size: 24px;
+}
+
+nav {
+    display: block;
+    padding: 15px;
+    margin: 10px 0;
+    background: #ddd;
+    position: relative;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav * {
+    display: inline;
+    vertical-align: middle;
+}
+
+nav li:last-child {
+    font-weight: bold;
+}
+
+nav li+li:before {
+    font-weight: normal;
+    padding: 8px;
+    color: black;
+    content: ">";
+}
+
+nav a {
+    color: #222;
+    text-decoration: none;
+    border-bottom: 2px dotted #222;
+    border-radius: 5px;
+}
+
+nav img {
+    border-radius: 50%;
+    margin-right: 1em;
+}
+nav .tags {
+    float: right;
+    vertical-align: middle;
+}
+
+nav .tags select, nav .tags option, nav .tags input, .btn {
+    border: none;
+    background: #ccc;
+    padding: 4px;
+    outline: none;
+}
+
+nav .tags select {
+    border-radius: 7.5px;
+}
+
+.post {
+    padding-top: 10px;
+    overflow: visible;
+    width: 100%;
+}
+.post .author {
+    background: #ddd;
+    max-width: 15%;
+    min-width: 150px;
+    margin-right: 10px;
+    padding: 10px;
+    align-items: center;
+}
+.post .author img {
+    height: 128px;
+    width: auto;
+    margin: 5px auto;
+}
+.post .author .small-avatar {
+    display: none;
+}
+.post .author .timestamp {
+    display: none;
+}
+.post .badges {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.post .badges li {
+    background: #bbb;
+    padding: 4px;
+    margin: 4px auto;
+    text-align: center;
+    display: inline-block;
+}
+.post .timestamp {
+    padding: 4px;
+    font-size: 12px;
+    font-size: 0.8rem;
+    color: #444;
+    width: 100%;
+    display: block;
+}
+.post .content {
+    flex-wrap: wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 600px; /* required for legacy flexbox */
+    flex: 0 1 100%;
+}
+.post .content p {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+.post .content img {
+    max-width: 256px;
+    max-width: 40vw;
+    max-height: 256px;
+    max-height: 40vh;
+    height: auto;
+    display: block;
+}
+
+.btn {
+    border: none;
+    background: #ccc;
+    padding: 4px;
+    border-radius: 7.5px;
+    cursor: pointer;
+    color:#111;
+}
+
+.more {
+    display:block;
+    position: relative;
+    height: 3em;
+}
+
+.prevbtn, .nextbtn {
+    font-size: 16px;
+    padding: 8px;
+    margin: 4px;
+    position: absolute;
+}
+
+.prevbtn {
+    left: 0;
+    top: 0;
+}
+.nextbtn {
+    right: 0;
+    top: 0;
+}
+
+/* mobile */
+
+.highlight {
+    background: #ccc!important;
+}
+
+.tabular-list {
+    display: grid;
+    position: relative;
+}
+
+.forum-list {
+    grid-template-columns: 3fr 2fr 1fr 1fr;
+}
+
+.post-list {
+    grid-template-columns: 2fr 1fr .3fr;
+}
+
+.post-list .tag-list {
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.post-list .tag-list li {
+    background: #bbb;
+    padding: 1px 2px;
+    display: inline;
+}
+
+.post-list .tag-list .emoji {
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+}
+
+.tabular-list > div {
+    margin: 3.5px;
+    padding: 5px 10px;
+    background: #ddd;
+    position: relative;
+    border-radius: 7.5px;
+}
+.tabular-list .label {
+    display: none;
+}
+
+.icon {
+    display: inline-block;
+    line-height: 1em;
+    width: 1.1em;
+    vertical-align: -0.2em;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 0.5rem;
+    }
+    nav li {
+        display: block;
+    }
+    nav img, nav ul {
+        display: inline-block;
+    }
+    nav .tags {
+        display: block;
+        float: none;
+    }
+    .post {
+        flex-direction: column;
+    }
+    .post .author {
+        padding: 2px 5px;
+        max-height: 40px;
+        min-width: 100%;
+        flex-direction: row;
+        align-items: left;
+    }
+    .post .author * {
+        display: inline;
+        align-items: center;
+    }
+    .post .author .timestamp,
+    .post .author .small-avatar,
+    .tabular-list .label
+     {
+        display: inline;
+    }
+    .post .author img {
+        height: 32px;
+        width: auto;
+        margin: auto 5px;
+        display: none;
+    }
+    .post .content .timestamp,
+    .forum-list .header, .post-list .header{
+        display: none;
+    }
+    .post-list .tag-list::before {
+        content: "Tags: ";
+    }
+    .post-list .tag-list {
+        display: block;
+        padding-top: 10px;
+    }
+    .postinfo img {
+        max-width: 100%;
+    }
+    .tabular-list {
+        display: block;
+    }
+    .tabular-list > div {
+        background-color: inherit!important;
+    }
+    .highlight {
+        font-size: 1.5rem;
+    }
+    .icon {
+        filter: invert();
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .logo a {
+        color: white;
+        border-bottom: 2px dotted #ddd;
+    }
+    body {
+        background: #111;
+        color: #eee;
+    }
+    blockquote {
+        background: #060606;
+        border-left: 3px solid #333;
+    }
+
+    a {
+        color: #5de;
+    }
+
+    h1 a {
+        color: white;
+    }
+
+    nav {
+        background: #222;
+    }
+
+    nav li+li:before {
+        color: white;
+    }
+
+    nav a {
+        color: #ddd;
+        border-bottom: 2px dotted #ddd;
+    }
+
+    .post .author {
+        background: #222;
+    }
+
+    .post .badges li {
+        background: #444;
+    }
+    .post .timestamp {
+        color: #bbb;
+    }
+
+    .highlight {
+        background: #444!important;
+    }
+
+    .post-list .tag-list li {
+        background: #555;
+    }
+
+    .tabular-list > div {
+        background: #333;
+    }
+
+    nav .tags select, nav .tags option, nav .tags input, .btn {
+        background: #333;
+        color: white!important;
+    }
+
+    .btn {
+        background: #333;
+        color: #eee;
+    }
+}
